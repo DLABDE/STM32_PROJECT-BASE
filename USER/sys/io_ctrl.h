@@ -1,5 +1,4 @@
 
-
 #ifndef __io_ctrl_H
 #define __io_ctrl_H
 
@@ -8,7 +7,6 @@ extern "C"
 {
 #endif
 
-#include "stm32f4xx_hal.h"
 #include "main.h"
 
 #define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
@@ -18,19 +16,20 @@ extern "C"
 #define PCin(n)    BIT_ADDR(GPIOC_IDR_Addr,n)
 #define Read_Touch_Pin	PCin(5)
 
-struct unionGPIO_Write
+union unionGPIO_Write
 {
 	uint32_t		all;
 	struct 
 	{
 		uint32_t		bLed			: 1;
 		uint32_t		bLcd_Light		: 1;
+		
 		uint32_t		bReserved		: 30;
 	} bit;
 };
 
 
-struct unionGPIO_Read
+union unionGPIO_Read
 {
 	uint32_t		all;
 	struct 
@@ -38,6 +37,7 @@ struct unionGPIO_Read
 		uint32_t		bLed		: 1;
 		uint32_t		bLcd_touch	: 1;
 		uint32_t		bKEY0		: 1;
+		
 		uint32_t		bReserved	: 29;
 	} bit;
 };
@@ -45,8 +45,8 @@ struct unionGPIO_Read
 
 struct structGPIOCtrl
 {
-	struct unionGPIO_Read read;
-	struct unionGPIO_Write write;
+	union unionGPIO_Read read;
+	union unionGPIO_Write write;
 };
 
 

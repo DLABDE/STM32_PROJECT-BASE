@@ -34,13 +34,14 @@ extern "C" {
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
-
+#include <stdbool.h>
 #include "FreeRTOS.h"
 #include "task.h"
 #include "cmsis_os.h"
 #include "queue.h"
 #include "semphr.h"
 
+#include "sys.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -55,14 +56,7 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-struct System_Msg
-{
-	uint16_t led_status;
-	uint16_t led_pwm;
-	uint16_t temp;
-};
 
-extern struct System_Msg sys_msg;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

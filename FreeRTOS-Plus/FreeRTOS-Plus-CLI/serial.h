@@ -28,16 +28,7 @@
 #define SERIAL_COMMS_H
 
 #include "main.h"
-#include "usart.h"
-
-#define FRA_HEAD	0xa5
-#define FRA_END		0xaa
-#define Max_FRA_Len 5
-
-#define ULOG	log_user
-
-#define USART_BUFF	(128)
-#define USART_FIFO_MAX_SIZE	(USART_BUFF*5)
+#include "usart_lay.h"
 
 typedef void * xComPortHandle;
 

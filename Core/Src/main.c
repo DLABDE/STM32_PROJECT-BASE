@@ -46,7 +46,6 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-struct System_Msg sys_msg ={0};
 
 /* USER CODE END PM */
 

@@ -29,9 +29,7 @@
 */
 
 /* Scheduler includes. */
-#include "FreeRTOS.h"
-#include "queue.h"
-#include "semphr.h"
+#include "main.h"
 
 /* Library includes. */
 #include "stm32f4xx_hal.h"
