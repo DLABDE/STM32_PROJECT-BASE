@@ -159,6 +159,7 @@ void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName)
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
+  //test
 	//GPIO_OLED_InitConfig();
 	PWM_Init();
 	vRegisterSampleCLICommands();
