@@ -10,8 +10,6 @@ static void gpio_read(void)
 {
 	sys_gpio.read.bit.bLed = HAL_GPIO_ReadPin(LED_GPIO_Port, LED_Pin);
 	sys_gpio.read.bit.bKEY0 = HAL_GPIO_ReadPin(KEY0_GPIO_Port, KEY0_Pin);
-	//sys_gpio.read.bit.bLcd_touch = HAL_GPIO_ReadPin(LCD_TOUCH_GPIO_Port, LCD_TOUCH_Pin);
-	sys_gpio.read.bit.bLcd_touch = Read_Touch_Pin;
 }
 
 

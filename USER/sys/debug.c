@@ -18,8 +18,7 @@ usartMsgCallback usartMsgCallbackArray[] =
 		DEBUG_TASK, usartRecv_task, "任务控制"
 	},
 };
-
-
+		
 static void usartRecv_write(UsartGetStruct * arg)
 {
 	if(arg->data == 1)

@@ -22,9 +22,7 @@ union unionGPIO_Write
 	struct 
 	{
 		uint32_t		bLed			: 1;
-		uint32_t		bLcd_Light		: 1;
 		
-		uint32_t		bReserved		: 30;
 	} bit;
 };
 
@@ -35,10 +33,7 @@ union unionGPIO_Read
 	struct 
 	{
 		uint32_t		bLed		: 1;
-		uint32_t		bLcd_touch	: 1;
 		uint32_t		bKEY0		: 1;
-		
-		uint32_t		bReserved	: 29;
 	} bit;
 };
 

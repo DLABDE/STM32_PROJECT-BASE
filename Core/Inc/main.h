@@ -72,14 +72,8 @@ void Error_Handler(void);
 #define KEY0_EXTI_IRQn EXTI4_IRQn
 #define LED_Pin GPIO_PIN_6
 #define LED_GPIO_Port GPIOA
-#define T_PEN_Pin GPIO_PIN_5
-#define T_PEN_GPIO_Port GPIOC
 #define SPI_CS_Pin GPIO_PIN_0
 #define SPI_CS_GPIO_Port GPIOB
-#define LCD_BL_Pin GPIO_PIN_1
-#define LCD_BL_GPIO_Port GPIOB
-#define T_CS_Pin GPIO_PIN_12
-#define T_CS_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 #define LED_SET	GPIO_PIN_RESET

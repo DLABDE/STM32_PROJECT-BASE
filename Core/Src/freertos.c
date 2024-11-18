@@ -32,7 +32,10 @@
 #include "io_ctrl.h"
 #include "spi_flash.h"
 #include "FreeRTOS_CLI.h"
-#include "lvgl_app.h"
+
+#include "oled.h"
+#include "bmp.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -159,8 +162,7 @@ void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName)
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
-  //base of OLED
-	//GPIO_OLED_InitConfig();
+	GPIO_OLED_InitConfig();
 	PWM_Init();
 	vRegisterSampleCLICommands();
 	vUARTCommandConsoleStart( 1024, 1 );
@@ -216,8 +218,8 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
-//	if(W25QXX_Init()==0)
-//		ULOG("FLASH INIT %X\t%d\r\n",flash_msg.type,flash_msg.size);
+	if(W25QXX_Init()==0)
+		ULOG("FLASH INIT %X\t%d\r\n",flash_msg.type,flash_msg.size);
   /* Infinite loop */
   for(;;)
   {
@@ -268,17 +270,33 @@ void Admin_Task(void *argument)
 void OLED_Task(void *argument)
 {
   /* USER CODE BEGIN OLED_Task */
-
-	lvgl_app_init();
-	//lv_demo_benchmark();
-	lvgl_app();
+	uint8_t Bufferr[15];
+	int Num=1208;
+	float Data=3.14;
+	
+	OLED_Clear();
+	
   /* Infinite loop */
   for(;;)
   {
-		if(SysClockFlag.bit.b10ms)
-			lv_timer_handler();
+		OLED_Clear();
+		OLED_ShowNum(0, 2, Num, 8, 16);
+		sprintf((char *)Bufferr, "%0.2f", Data);
+		OLED_ShowString(0,0, Bufferr);
+		OLED_ShowNum(0, 0, Data, 8, 16);
+		osDelay(600);
+
 		
-		lvgl_tick(1);
+		OLED_Clear();
+		OLED_ShowCHinese(0, 2, 0);
+		OLED_ShowCHinese(14, 2, 1);
+		OLED_ShowCHinese(28, 2, 2);
+		OLED_ShowCHinese(42, 2, 3);
+		osDelay(600);
+
+		OLED_Clear();
+		OLED_DrawBMP(0,0,126,8,BMP);
+		osDelay(500);
     osDelay(1);
   }
   /* USER CODE END OLED_Task */
